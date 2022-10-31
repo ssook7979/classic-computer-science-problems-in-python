@@ -16,3 +16,16 @@ class QueensConstraint(Constraint[int, int]):
                     if abs(q1r - q2r) == abs(q1c - q2c):
                         return False
         return True
+
+if __name__ == "__main__":
+    columns: List[int] = [1, 2, 3, 4, 5, 6, 7, 8]
+    rows: Dict[int, List[int]] = {}
+    for column in columns:
+        rows[column] = [1, 2, 3, 4, 5, 6, 7, 8]
+    csp : CSP[int, int] = CSP(columns, rows)
+    csp.add_constraint(QueensConstraint(columns))
+    solution: Optional[Dict[int, int]] = csp.backtracking_search()
+    if solution is None:
+        print("답을 찾을 수 없습니다.")
+    else:
+        print(solution)
