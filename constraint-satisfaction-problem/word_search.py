@@ -14,4 +14,4 @@ def generate_grid(rows: int, columns: int):
 
 def display_grid(grid: Grid) -> None:
     for row in grid:
-        print("".join(row))
+        print("".join(row)) 
