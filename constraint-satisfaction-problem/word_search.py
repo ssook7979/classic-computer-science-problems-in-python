@@ -25,3 +25,12 @@ def generate_domain(word: str, grid: Grid) -> List[List[GridLocation]]:
         for col in range(width):
             columns: range = range(col, col+length + 1)
             rows: range = range(col, col + 1)
+            if col + length <= width:
+                domain.append([GridLocation(row, c) for c in columns])
+            if row + length <= height:
+                domain.append([GridLocation(r, col + (r - row)) for r in rows])
+            if row + length <= height:
+                domain.append([GridLocation(r, col) for r in rows])
+                if col - length >= 0:
+                    domain.append([GridLocation(r, col - (r - row)) for r in rows])
+    return domain
