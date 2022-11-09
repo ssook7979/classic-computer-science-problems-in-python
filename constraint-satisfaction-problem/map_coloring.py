@@ -1,8 +1,10 @@
 from csp import Constraint, CSP
 from typing import Dict, List, Optional
 
-class MamColoringConstraint(Constraint[str, str]):
+
+class MapColoringConstraint(Constraint[str, str]):
     def __init__(self, place1: str, place2: str) -> None:
+        # or Constraint.__init__([place1, place2])
         super().__init__([place1, place2])
         self.place1: str = place1
         self.place2: str = place2
@@ -12,8 +14,34 @@ class MamColoringConstraint(Constraint[str, str]):
             return True
         return assignment[self.place1] != assignment[self.place2]
 
+
 if __name__ == "__main__":
-    variables: List[str] = ["웨스턴 오스트레일리아", "노던 준주", "사우스 오스트레일리아", "퀸즐랜드", "뉴사우스웨일스", "빅토리아", "태즈메이니아"]
+    variables: List[str] = ["Western Australia", "Northern Territory",
+                            "South Australia", "Queensland", "New South Wales", "Victoria", "Tasmania"]
+    # domain of each variable is the three colors, red, green and blue
     domains: Dict[str, List[str]] = {}
     for variable in variables:
-        domains[variable] = ["빨강", "처럭", "파랑"]
+        domains[variable] = ["red", "green", "blue"]
+
+    csp: CSP[str, str] = CSP(variables, domains)
+    csp.add_constraint(MapColoringConstraint(
+        "Western Australia", "Northern Territory"))
+    csp.add_constraint(MapColoringConstraint(
+        "Western Australia", "South Australia"))
+    csp.add_constraint(MapColoringConstraint(
+        "South Australia", "Northern Territory"))
+    csp.add_constraint(MapColoringConstraint(
+        "Queensland", "Northern Territory"))
+    csp.add_constraint(MapColoringConstraint("Queensland", "South Australia"))
+    csp.add_constraint(MapColoringConstraint("Queensland", "New South Wales"))
+    csp.add_constraint(MapColoringConstraint(
+        "New South Wales", "South Australia"))
+    csp.add_constraint(MapColoringConstraint("Victoria", "South Australia"))
+    csp.add_constraint(MapColoringConstraint("Victoria", "New South Wales"))
+    csp.add_constraint(MapColoringConstraint("Victoria", "Tasmania"))
+
+    solution: Optional[Dict[str, str]] = csp.backtracking_search()
+    if solution is None:
+        print("No solution found!")
+    else:
+        print(solution)
