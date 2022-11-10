@@ -27,8 +27,8 @@ def generate_domain(word: str, grid: Grid) -> List[List[GridLocation]]:
     length: int = len(word)
     for row in range(height):
         for col in range(width):
-            columns: range = range(col, col+length + 1)
-            rows: range = range(col, col + 1)
+            columns: range = range(col, col + length + 1)
+            rows: range = range(row, row + length + 1)
             if col + length <= width:
                 # left to right
                 domain.append([GridLocation(row, c) for c in columns])
@@ -77,7 +77,6 @@ if __name__ == "__main__":
                 grid_locations.reverse()
             for index, letter in enumerate(word):
                 (row, col) = (
-                    # TODO: fix list index out of range error
                     grid_locations[index].row, grid_locations[index].column)
                 grid[row][col] = letter
         display_grid(grid)
