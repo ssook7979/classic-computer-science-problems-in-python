@@ -25,3 +25,16 @@ class Comparable(Protocol):
 
     def __ge__(self: C, other: C) -> bool:
         return not self < other
+
+def binary_contains(sequence: Sequence[C], key: C) -> bool:
+    low: int = 0
+    high: int = len(sequence) - 1
+    while low <= high:
+        mid: int = (low + high) // 2
+        if sequence[mid] < key:
+            low = mid + 1
+        elif sequence[mid] > key:
+            high = mid - 1
+        else:
+            return True
+    return False
