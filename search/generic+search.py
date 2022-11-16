@@ -38,3 +38,8 @@ def binary_contains(sequence: Sequence[C], key: C) -> bool:
         else:
             return True
     return False
+
+    if __name__ == "__main__":
+        print(linear_contains([1, 5, 15, 15, 15, 15, 20], 5)) # True
+        print(binary_contains(['a', 'd', 'e', 'f', 'z'],'f')) # True
+        print(linear_contains(['john', 'mark', 'ronald', 'sarah'], 'sheila')) # False
