@@ -10,3 +10,7 @@ class Cell(str, Enum):
     START = "S"
     GOAL = "G"
     PATH = "*"
+
+class MazeLocation(NamedTuple):
+    row: int
+    column: int
