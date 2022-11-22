@@ -37,3 +37,9 @@ class Maze:
             for column in range(columns):
                 if random.uniform(0, 1.0) < sparseness:
                     self._grid[row][column] = Cell.BLOCKED
+
+    def __str__(self) -> str:
+        output: str = ""
+        for row in self._grid:
+            output += "".join([c.value for c in row]) + "\n"
+        return output
