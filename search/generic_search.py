@@ -43,3 +43,7 @@ def binary_contains(sequence: Sequence[C], key: C) -> bool:
         print(linear_contains([1, 5, 15, 15, 15, 15, 20], 5)) # True
         print(binary_contains(['a', 'd', 'e', 'f', 'z'],'f')) # True
         print(linear_contains(['john', 'mark', 'ronald', 'sarah'], 'sheila')) # False
+
+class Stack(Generic[T]):
+    def __init__(self) -> None:
+        self._container: List[T] = []
