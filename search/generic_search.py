@@ -47,3 +47,6 @@ def binary_contains(sequence: Sequence[C], key: C) -> bool:
 class Stack(Generic[T]):
     def __init__(self) -> None:
         self._container: List[T] = []
+        
+    def pop(self) -> T:
+        return self._container.pop()
