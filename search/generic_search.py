@@ -50,3 +50,9 @@ class Stack(Generic[T]):
         
     def pop(self) -> T:
         return self._container.pop()
+
+    def push(self, item: T) -> None:
+        self._container.append(item)
+    
+    def __repr__(self) -> str:
+        return repr(self._container)
