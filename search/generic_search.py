@@ -78,3 +78,10 @@ def dfs(initial: T, goal_test: Callable[[T], bool], successors: Callable[[T], Li
 
         if goal_test(current_state):
             return current_node
+        
+        for child in successors(current_state):
+            if child in explored:
+                continue
+            explored.add(child)
+            frontier.push(Node(child, current_node))
+        return Node
