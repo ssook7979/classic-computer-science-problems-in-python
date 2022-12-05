@@ -22,7 +22,7 @@ class Maze:
                 goal: MazeLocation = MazeLocation(0, 0)) -> None:
         self._rows: int = rows
         self._columns: int = columns
-        self.stsart: MazeLocation = start
+        self.start: MazeLocation = start
         self.goal: MazeLocation = goal
 
         self._grid: List[List[Cell]] = [[Cell.EMPTY for c in range(columns)] for r in range(rows)]
@@ -58,3 +58,9 @@ class Maze:
         if ml.column - 1 > 0 and self._grid[ml.row][ml.column -1]!=Cell.BLOCKED:
             locations.append(MazeLocation(ml.row, ml.column -1 ))
         return locations
+
+    def mark(self, path: List[MazeLocation]):
+        for maze_location in path:
+            self._grid[maze_location.row][maze_location.column] = Cell.PATH
+        self._grid[self.start.row][self.start.column] = Cell.START
+        self._grid[self.goal.row][self.goal.column] = Cell.GOAL
