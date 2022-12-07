@@ -70,3 +70,16 @@ class Maze:
             self._grid[maze_location.row][maze_location.column] = Cell.EMPTY
         self._grid[self.start.row][self.start.column] = Cell.START
         self._grid[self.goal.row][self.goal.column] = Cell.GOAL
+
+if __name__ == "__main__":
+    m: Maze = Maze()
+    print(m)
+    solution1: Optional[Node[MazeLocation]] = dfs(m.start, m.goal_test, m.successors)
+
+    if solution1 is None:
+        print("Can't find path")
+    else:
+        path1: List[MazeLocation] = node_to_path(solution1)
+        m.mark(path1)
+        print(m)
+        m.clear(path1)
