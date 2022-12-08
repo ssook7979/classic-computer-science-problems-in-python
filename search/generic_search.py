@@ -93,3 +93,7 @@ def node_to_path(node: Node[T]) -> List[T]:
         path.append(node.state)
     path.reverse()
     return path
+
+class Queue(Generic[T]):
+    def __init__(self) -> None:
+        self._container: Deque[T] = Deque()
