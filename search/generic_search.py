@@ -97,3 +97,7 @@ def node_to_path(node: Node[T]) -> List[T]:
 class Queue(Generic[T]):
     def __init__(self) -> None:
         self._container: Deque[T] = Deque()
+
+    @property
+    def empty(self) -> bool:
+        return not self._container
