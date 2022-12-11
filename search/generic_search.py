@@ -101,3 +101,6 @@ class Queue(Generic[T]):
     @property
     def empty(self) -> bool:
         return not self._container
+
+    def push(self, item: T) -> None:
+        self._container.push(item)
