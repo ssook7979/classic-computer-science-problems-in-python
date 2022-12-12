@@ -104,3 +104,6 @@ class Queue(Generic[T]):
 
     def push(self, item: T) -> None:
         self._container.push(item)
+    
+    def pop(self, item: T) -> T:
+        self._container.popleft()
