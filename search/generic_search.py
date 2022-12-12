@@ -107,3 +107,6 @@ class Queue(Generic[T]):
     
     def pop(self, item: T) -> T:
         self._container.popleft()
+
+    def __repr__(self) -> str:
+        return repr(self._container)
