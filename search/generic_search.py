@@ -110,3 +110,6 @@ class Queue(Generic[T]):
 
     def __repr__(self) -> str:
         return repr(self._container)
+
+def bfs(initial: T, goal_test: Callable[[T], bool], successors: Callable[[T], List[T]])->Optional[Node[T]]:
+    pass
