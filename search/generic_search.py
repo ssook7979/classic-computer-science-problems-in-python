@@ -112,4 +112,7 @@ class Queue(Generic[T]):
         return repr(self._container)
 
 def bfs(initial: T, goal_test: Callable[[T], bool], successors: Callable[[T], List[T]])->Optional[Node[T]]:
-    pass
+    frontier: Queue[Node[T]] = Queue()
+    frontier.push(Node(initial, None))
+    explored: Set[T] = {initial}
+    
