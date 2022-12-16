@@ -83,3 +83,5 @@ if __name__ == "__main__":
         m.mark(path1)
         print(m)
         m.clear(path1)
+
+    solution2: Optional[Node[MazeLocation]] = bfs(m.start, m.goal_test, m.successors)
