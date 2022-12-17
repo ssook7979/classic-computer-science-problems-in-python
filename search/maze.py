@@ -85,3 +85,11 @@ if __name__ == "__main__":
         m.clear(path1)
 
     solution2: Optional[Node[MazeLocation]] = bfs(m.start, m.goal_test, m.successors)
+
+    if solution2 is None:
+        print("Can't find solution with dfs.")
+    else:
+        path2: List[MazeLocation] = node_to_path(solution2)
+        m.mark(path2)
+        print(m)
+        m.clear(path2)
