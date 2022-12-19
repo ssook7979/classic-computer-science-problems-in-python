@@ -133,3 +133,12 @@ def bfs(initial: T, goal_test: Callable[[T], bool], successors: Callable[[T], Li
 class PriorityQueue(Generic[T]):
     def __init__(self) -> None:
         self._container: List[T] = []
+
+    def push(self, item: T) -> None:
+        heappush(self._container, item)
+    
+    def pop(self) -> T:
+        return heappop(self._container)
+    
+    def __repr__(self) -> str:
+        return repr(self._container)
