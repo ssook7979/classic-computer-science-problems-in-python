@@ -79,6 +79,14 @@ def euclidean_distance(goal: MazeLocation) -> Callable[[MazeLocation], float]:
         return sqrt((xdist * xdist) + (ydist * ydist))
     return distance # 미리 입력받은 goal 까지의 euclidean 거리를 계산하는 함수를 반환
 
+# 대각선으로 갈 수 없음
+def manhattan_distance(goal: MazeLocation) -> Callable[[MazeLocation], float]:
+    def distance(ml: MazeLocation) -> float:
+        xdist: int = abs(ml.column - goal.column)
+        ydist: int = abs(ml.row - goal.row)
+        return xdist + ydist
+    return distance
+
 if __name__ == "__main__":
     m: Maze = Maze()
     print(m)
