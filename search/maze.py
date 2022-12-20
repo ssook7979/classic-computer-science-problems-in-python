@@ -71,6 +71,14 @@ class Maze:
         self._grid[self.start.row][self.start.column] = Cell.START
         self._grid[self.goal.row][self.goal.column] = Cell.GOAL
 
+# capturing(영구적으로 참조) goal variable
+def euclidean_distance(goal: MazeLocation) -> Callable[[MazeLocation], float]:
+    def distance(ml: MazeLocation) -> float:
+        xdist: int = ml.column - goal.column
+        ydist: int = ml.row - goal.row
+        return sqrt((xdist * xdist) + (ydist * ydist))
+    return distance # 미리 입력받은 goal 까지의 euclidean 거리를 계산하는 함수를 반환
+
 if __name__ == "__main__":
     m: Maze = Maze()
     print(m)
