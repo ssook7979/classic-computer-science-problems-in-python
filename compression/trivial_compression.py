@@ -16,3 +16,6 @@ class CompressedGene:
                 self.bit_string |= 0b11
             else:
                 raise ValueError("Invalid nucleotide: {}".format(nucleotide))
+    
+    def decompress(self) -> str:
+        gene: str = ""
