@@ -33,3 +33,6 @@ class Graph(Generic[V]):
         u: int = self._vertices.index(first)
         v: int = self._vertices.index(second)
         self.add_edge_by_indices(u, v)
+    
+    def vertex_at(self, index: int) -> V:
+        return self._vertices[index]
