@@ -39,3 +39,7 @@ class Graph(Generic[V]):
     
     def index_of(self, vertex: V) -> int:
         return self._vertices.index(vertex)
+    
+    def neighbors_for_index(self, index: int) -> List[V]:
+        return list(map(self.vertex_at, [e.v for e in self._edges[index]]))
+    
