@@ -57,3 +57,7 @@ class Graph(Generic[V]):
         for i in range(self.vertex_count):
             desc += f"{self.vertex_at(i)} -> {self.neighbors_for_index(i)}\n"
         return desc
+
+from search.generic_search import bfs, Node, node_to_path
+
+bfs_result: Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
