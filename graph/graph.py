@@ -61,3 +61,10 @@ class Graph(Generic[V]):
 from search.generic_search import bfs, Node, node_to_path
 
 bfs_result: Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
+
+if bfs_result is None:
+    print("Can't find answer with bfs")
+else:
+    path: List[V] = node_to_path(bfs_result)
+    print("The shortest path from Boston to Maiami: ")
+    print(path)
