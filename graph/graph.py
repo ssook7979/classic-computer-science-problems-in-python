@@ -60,11 +60,16 @@ class Graph(Generic[V]):
 
 from search.generic_search import bfs, Node, node_to_path
 
-bfs_result: Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
+if __name__ == "__main__":
+    city_graph: Graph[str] = Graph(["시애틀", "샌프란시스코", "로스앤젤레스", "리버사이드", "피닉스", 
+                                    "시카고", "보스턴", "뉴욕", "애틀란타", "마이애미", "댈러스", "휴스톤",
+                                    "디트로이트", "필라델피아", "워싱턴"])
 
-if bfs_result is None:
-    print("Can't find answer with bfs")
-else:
-    path: List[V] = node_to_path(bfs_result)
-    print("The shortest path from Boston to Maiami: ")
-    print(path)
+    bfs_result: Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
+
+    if bfs_result is None:
+        print("Can't find answer with bfs")
+    else:
+        path: List[V] = node_to_path(bfs_result)
+        print("The shortest path from Boston to Maiami: ")
+        print(path)
