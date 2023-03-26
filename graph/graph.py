@@ -64,6 +64,11 @@ if __name__ == "__main__":
     city_graph: Graph[str] = Graph(["시애틀", "샌프란시스코", "로스앤젤레스", "리버사이드", "피닉스", 
                                     "시카고", "보스턴", "뉴욕", "애틀란타", "마이애미", "댈러스", "휴스톤",
                                     "디트로이트", "필라델피아", "워싱턴"])
+    
+    city_graph.add_edge_by_vertices("시애틀", "시카고")
+    city_graph.add_edge_by_vertices("시애틀", "샌프란시스코")
+    city_graph.add_edge_by_vertices("샌프란시스코", "리버사이드")
+    city_graph.add_edge_by_vertices("샌프란시스코", "로스앤젤레스")
 
     bfs_result: Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
 
