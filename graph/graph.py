@@ -88,6 +88,7 @@ if __name__ == "__main__":
     city_graph.add_edge_by_vertices("보스턴", "뉴욕")
     city_graph.add_edge_by_vertices("뉴욕", "필라델피아")
     city_graph.add_edge_by_vertices("필라델피아", "워싱턴")
+    print(city_graph)
 
     bfs_result: Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
 
