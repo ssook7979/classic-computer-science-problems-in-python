@@ -98,3 +98,6 @@ if __name__ == "__main__":
         path: List[V] = node_to_path(bfs_result)
         print("The shortest path from Boston to Maiami: ")
         print(path)
+
+import sys
+sys.path.insert(0, '...')
