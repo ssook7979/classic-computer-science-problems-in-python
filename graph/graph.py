@@ -101,3 +101,13 @@ if __name__ == "__main__":
 
 import sys
 sys.path.insert(0, '...')
+
+from search.generic_search import bfs, Node, node_to_path
+
+bfs_result = Optional[Node[V]] = bfs("보스턴", lambda x: x == "마이애미", city_graph.neighbors_for_vertex)
+if bfs_result is None:
+    print("너비 우선 탐색으로 답을 찾을 수 없습니다.")
+else:
+    path: List[V] = node_to_path(bfs_result)
+    print("보스턴에서 마이애미까지 최단 경로: ")
+    print(path)
