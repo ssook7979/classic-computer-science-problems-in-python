@@ -9,3 +9,6 @@ class WeightedEdge(Edge):
     def reversed(self) -> WeightedEdge:
         return WeightedEdge(self.v, self.u, self.weight)
     
+    def get(self):
+        pass
+    
